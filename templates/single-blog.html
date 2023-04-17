@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="blog">
+        <div class="blog-wrapper">
+
+            <!-- Image here -->
+            <img src="https://source.unsplash.com/random?IT professional" alt="An image related to the blog" class="blog-image">
+
+            <div class="blog-text-wrapper">
+                <!-- Blog details -->
+                <div class="blog-details flex">
+                    <h2 class="blog-author">
+                        By <span>{{ author_name }}</span>
+                    </h2>
+
+                    <div class="datetime flex">
+                        <h3 class="date">{{ date }}</h3>
+                        <h3 class="time">{{ time }}</h3>
+                    </div>
+                </div>
+
+                
+                
+                <!-- Title -->
+                <h1 class="blog-title">
+                    <!-- Add jinja title here.. replace line below -->
+                    This is the title of my blog..
+                </h1>
+                
+                <!-- Content -->
+                <!-- Use jinja here -->
+                <div class="blog-content">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, non?</p> <br><br>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum similique qui accusamus obcaecati odio doloremque inventore! Laborum non praesentium dolores.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis dolore ullam error doloribus ratione quisquam, temporibus totam ab minus, consectetur suscipit optio iusto maiores. Tenetur illo doloribus repellendus error, rem corrupti porro enim sed. Iste voluptatum fugiat fugit ullam harum!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero fuga voluptatibus dolorem iusto asperiores distinctio nisi veniam nostrum, repudiandae aspernatur!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, dolor!</p> <br><br>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quibusdam ipsam eligendi praesentium sit nemo perspiciatis, quis natus consequuntur porro?</p>
+                </div>
+
+                <!-- Link this to all blogs page -->
+                <h3><a href="#" class="go-back">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                      </svg>
+                      
+                    Go back
+                </a></h3>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+
+<style>
+    *,
+    *::after,
+    *::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    html,
+    body {
+        min-height: 100%;
+    }
+
+
+    :root {
+        --clr-primary: rgb(225, 85, 35);
+        --clr-dark-400: #202020;
+        --clr-dark-700: #101010;
+        --clr-light: #fff;
+        --clr-muted: rgba(255, 255, 255, 0.6);
+        --gradient: linear-gradient(90deg, rgba(225, 85, 35, 1) 0%, rgba(220, 45, 85, 1) 100%);
+    }
+
+    a,
+    h1,
+    h2,
+    h3 {
+        text-decoration: none;
+        color: inherit;
+        font-size: inherit;
+    }
+
+    li {
+        list-style-type: none;
+    }
+
+    .flex {
+        display: flex;
+        gap: 1rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    body {
+        background-color: var(--clr-dark-700);
+        font-family: 'Roboto', sans-serif;
+        color: var(--clr-light);
+    }
+
+    .blog-image {
+        width: 100%;
+        max-height: 30rem;
+        object-fit: cover;
+
+    }
+
+    .blog {
+        margin-block: 3rem;
+    }
+
+    .blog-wrapper {
+        background-color: var(--clr-dark-400);
+        max-width: min(1000px, 90vw);
+        margin-inline: auto;
+    }
+
+    .blog-text-wrapper {
+        padding: 2rem;
+    }
+
+    .blog-details {
+        color: var(--clr-primary);
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .blog-details .datetime {
+        font-size: 0.7rem;
+    }
+
+    .blog-title {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--clr-light);
+        text-decoration: underline var(--clr-primary) 5px;
+        margin-block: 4rem;
+        max-width: 60%;
+    }
+
+    .go-back {
+        max-width: max-content;
+        margin-top: 4rem;
+        color: var(--clr-primary);
+        margin-inline: auto;
+        display: flex;
+        align-items: center;
+        background-color: var(--clr-dark-700);
+        padding: .4rem 2rem;
+        border-radius: 25px;
+    }
+
+    .go-back svg {
+        width: 3rem;
+    }
+
+
+    @media ( max-width: 700px ) {
+        .blog-title {
+            max-width: 100%;
+        }
+    }
+
+</style>
+
+
+
+</html>

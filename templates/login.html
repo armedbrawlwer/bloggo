@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% include 'bootstrap.html' %}
+    <title>Login</title>
+
+    <!--   Google Fonts start   -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+    <!--   Google Fonts end   -->
+
+</head>
+
+<body>
+    {% include 'nav2.html' %}
+
+    <div class="login_container">
+
+        <h1 class="form_heading">Login</h1>
+
+        <form action="/login/success" method="post">
+
+            <div class="container mt-4 mb-4 field">
+                <label>Username</label><br>
+                <input type="text" required name="username" placeholder="Enter your Username">
+            </div>
+
+            <div class="container mt-4 mb-4 field">
+                <label>Password</label><br>
+                <input type="password" required id="pwd" name="pwd" placeholder="Enter your Passoword">
+            </div>
+
+            <div class="container mt-4 mb-4">
+                <input type="submit" value="LOGIN">
+            </div>
+
+        </form>
+
+        <div class="register">
+            <p>Not Registered?</p>
+            <a href="{{ url_for('signup') }}">SIGN UP</a>
+        </div>
+
+    </div>
+
+</body>
+
+
+
+<!--  My CSS  -->
+<style>
+    html,
+    body {
+        min-height: 100%;
+    }
+
+
+    :root {
+        --clr-primary: rgb(225, 85, 35);
+        --clr-dark-400: #202020;
+        --clr-dark-700: #101010;
+        --clr-light: #fff;
+        --clr-muted: rgba(255, 255, 255, 0.6);
+        --gradient: linear-gradient(90deg, rgba(225, 85, 35, 1) 0%, rgba(220, 45, 85, 1) 100%);
+    }
+
+    body {
+        background-color: var(--clr-dark-700);
+        font-family: 'Roboto', sans-serif;
+        cursor: default;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    a {
+        color: inherit;
+    }
+
+    .form_heading {
+        font-family: 'Delicious Handrawn', cursive;
+        font-size: 3rem;
+        text-align: center;
+        margin: 3rem 0;
+        color: var(--clr-light);
+        text-decoration: underline dotted var(--clr-primary) 8px;
+    }
+
+
+    .login_container {
+        margin: auto;
+        margin-top: 5rem;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--clr-dark-400);
+        padding: 0 2.5rem;
+        border-radius: 10px;
+    }
+
+    .field {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .field label {
+        font-size: .925rem;
+        margin-bottom: .3rem;
+        margin-top: 1rem;
+        font-weight: 700;
+        color: var(--clr-muted);
+    }
+
+    .field input {
+        padding: .65rem .5rem;
+        border: none;
+        border-radius: 10px;
+        background: var(--clr-dark-700);
+        color: var(--clr-primary);
+        box-shadow: rgba(255, 255, 255, 0.1) 0px 10px 10px -10px;
+    }
+
+    input[type=submit] {
+        margin-top: 3rem;
+        display: block;
+        width: 100%;
+        padding: .625rem 0;
+        border: none;
+        border-radius: 50px;
+        color: #fff;
+        font-weight: 900;
+        letter-spacing: 1px;
+        background: var(--clr-primary);
+        background: var(--gradient);
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background: var(--clr-dark-700);
+        color: var(--clr-primary);
+        box-shadow: rgba(255, 255, 255, 0.2) 0px 10px 10px -10px;
+        transition: all 200ms ease-in-out;
+    }
+
+
+
+    .register {
+        margin-top: 5rem;
+        margin-bottom: 3rem;
+        text-align: center;
+        font-size: .7rem;
+        color: var(--clr-muted);
+    }
+
+    .register a {
+        font-weight: 700;
+        margin: auto;
+        margin-top: 1rem;
+        display: block;
+        max-width: max-content;
+        font-size: .85rem;
+    }
+
+    .register a:hover {
+        color: var(--clr-primary);
+    }
+
+
+
+    @media (max-width: 450px) {
+        .login_container {
+            margin-top: 0;
+            height: 100%;
+            border-radius: 0;
+        }
+    }
+</style>
+<!-- CSS Ends -->
+
+
+
+</html>
