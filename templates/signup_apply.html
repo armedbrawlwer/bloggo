@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Successful</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  
+  
+  <body>
+    {% include 'nav4.html' %}
+    
+    <div class="main-wrapper">
+      <div class="success-wrapper">
+        <h1 class="title">Thanks for Registering!</h1>
+        <h2>Your Account has been created..</h2>
+        <h3>Start posting your own bloggs now!</h3>
+
+        <a href='/' class="go-back">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                      </svg>
+                      
+                    Home
+
+          
+                </a>
+      </div>
+    </div>
+    
+    <!-- <a href="/" type="button" class="btn btn-primary">Home</a> -->
+
+    
+  </body>
+
+
+
+<style>
+
+    *,
+    *::after,
+    *::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    html,
+    body {
+        min-height: 100%;
+    }
+
+
+    :root {
+        --clr-primary: rgb(225, 85, 35);
+        --clr-dark-400: #202020;
+        --clr-dark-700: #101010;
+        --clr-light: #fff;
+        --clr-muted: rgba(255, 255, 255, 0.6);
+        --gradient: linear-gradient(90deg, rgba(225, 85, 35, 1) 0%, rgba(220, 45, 85, 1) 100%);
+    }
+
+    a,
+    h1,
+    h2,
+    h3 {
+        text-decoration: none;
+        color: inherit;
+        font-size: inherit;
+    }
+
+    li {
+        list-style-type: none;
+    }
+
+    body {
+        background-color: var(--clr-dark-700);
+        font-family: 'Roboto', sans-serif;
+        color: var(--clr-light);
+    }
+
+  .main-wrapper {
+        margin-block: 3rem;
+    }
+
+    .success-wrapper {
+        text-align: center;
+        background-color: var(--clr-dark-400);
+      padding-block: 2rem;
+      border-radius: 15px;
+        color: var(--clr-light);
+        max-width: min(1000px, 90vw);
+        margin-inline: auto;
+      
+    }
+  .success-wrapper .title {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    color: var(--clr-primary);
+    margin-bottom: 4rem;
+  }
+  .success-wrapper h2 {
+    margin-bottom: .8rem;
+    font-size: 1.2rem;
+  }
+  .success-wrapper h3 {
+    color: var(--clr-muted);
+  }
+
+    .go-back {
+        max-width: max-content;
+        margin-top: 3rem;
+        color: var(--clr-primary);
+        margin-inline: auto;
+        display: flex;
+        align-items: center;
+        background-color: var(--clr-dark-700);
+        padding: .4rem 2rem;
+        border-radius: 25px;
+    }
+
+    .go-back svg {
+        width: 3rem;
+    }
+
+</style>
+
+
+</html>

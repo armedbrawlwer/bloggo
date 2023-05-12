@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories</title>
+
+    <!--   Google Fonts   -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+  {% if nav==2 %}
+    {% include 'nav2.html' %}
+
+  {% elif nav==3 %}
+    {% include 'nav3.html' %}
+
+  {% endif %}
+
+    <div class="main-wrapper">
+        <div class="category-wrapper">
+            <h1 class="section-title">Blog categories</h1>
+
+            <div class="cards">
+
+              
+                <!-- Start for loop here (single card start here) -->
+              {% for cat in category %}
+                <div class="card">
+                    <div class="card-image">
+                    <img src="https://source.unsplash.com/random?{{cat['category']}}" alt="Category image">
+                    </div>
+                    <h2 class="card-title"><a href="/categories/{{nav}}/{{uid}}/{{cat['category']}}">{{cat['category']}}</a></h2>
+                </div>
+              {% endfor %}
+                <!-- End for loop here (single card ends here) -->
+
+
+                <!-- Delete everything below this comment-->
+                <!-- <div class="card">
+                    <div class="card-image">
+                    <img src="https://source.unsplash.com/random?Painting" alt="Category image">
+                    </div>
+                    <h2 class="card-title"><a href="#">Painting</a></h2>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                    <img src="https://source.unsplash.com/random?Programming" alt="Category image">
+                    </div>
+                    <h2 class="card-title"><a href="#">Programming</a></h2>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                    <img src="https://source.unsplash.com/random?Forest" alt="Category image">
+                    </div>
+                    <h2 class="card-title"><a href="#">Forest</a></h2>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                    <img src="https://source.unsplash.com/random?Car" alt="Category image">
+                    </div>
+                    <h2 class="card-title"><a href="#">Car</a></h2>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                    <img src="https://source.unsplash.com/random?Smartphone" alt="Category image">
+                    </div>
+                    <h2 class="card-title"><a href="#">Smartphone</a></h2>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                    <img src="https://source.unsplash.com/random?Ocean" alt="Category image">
+                    </div>
+                    <h2 class="card-title"><a href="#">Ocean</a></h2>
+                </div> -->
+                <!-- Delete everything above this comment -->
+
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+<style>
+    *,
+    *::after,
+    *::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --clr-primary: rgb(225, 85, 35);
+        --clr-dark-400: #202020;
+        --clr-dark-700: #101010;
+        --clr-light: #fff;
+        --clr-muted: rgba(255, 255, 255, 0.6);
+        --gradient: linear-gradient(90deg, rgba(225, 85, 35, 1) 0%, rgba(220, 45, 85, 1) 100%);
+    }
+
+    html {
+        min-height: 100vh;
+    }
+
+    a,
+    h1,
+    h2,
+    h3 {
+        text-decoration: none;
+        color: inherit;
+        font-size: inherit;
+    }
+
+    li {
+        list-style-type: none;
+    }
+
+    body {
+        background-color: var(--clr-dark-700);
+        font-family: 'Roboto', sans-serif;
+        color: var(--clr-light);
+    }
+
+    .main-wrapper {
+        margin-block: 3rem;
+    }
+
+    .category-wrapper {
+        margin-inline: auto;
+        max-width: min(1200px, 90vw);
+    }
+
+    .section-title {
+        font-size: 3rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1rem;
+    }
+
+    .card{
+        background-color: var(--clr-dark-400);
+        margin-bottom: 1rem;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .card-image img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    .card-title {
+        text-align: center;
+        font-size: 1.1rem;
+        margin-block: 2rem;
+    }
+    .card a:hover {
+        color: var(--clr-primary);
+        transition: all 100ms ease-in;
+    }
+
+
+
+
+    @media ( max-width: 1000px ) {
+        .cards {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    @media ( max-width: 800px ) {
+        .cards {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media ( max-width: 500px ) {
+        .cards {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media ( max-width: 350px ) {
+        .cards {
+            grid-template-columns: 1fr;
+        }
+    }
+
+
+</style>
+
+
+
+</html>

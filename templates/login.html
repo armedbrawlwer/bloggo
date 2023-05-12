@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {% include 'bootstrap.html' %}
+    
     <title>Login</title>
 
     <!--   Google Fonts start   -->
@@ -19,13 +19,13 @@
 </head>
 
 <body>
-    {% include 'nav2.html' %}
+    {% include 'nav4.html' %}
 
     <div class="login_container">
 
         <h1 class="form_heading">Login</h1>
 
-        <form action="/login/success" method="post">
+        <form action="/check_for_login" method="post">
 
             <div class="container mt-4 mb-4 field">
                 <label>Username</label><br>
@@ -124,6 +124,8 @@
         border: none;
         border-radius: 10px;
         background: var(--clr-dark-700);
+        font-weight: 700;
+        font-size: 1.1rem;
         color: var(--clr-primary);
         box-shadow: rgba(255, 255, 255, 0.1) 0px 10px 10px -10px;
     }

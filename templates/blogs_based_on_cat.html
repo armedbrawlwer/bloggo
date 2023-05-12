@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  {% if nav== 2 %}
+    {% include "nav2.html" %}
+
+  {% elif nav==3 %}
+    {% include "nav3.html" %}
+
+  {% endif %}
+    <section class="blogs">
+        <div class="wrapper">
+            <h1 class="section-title">{{cat}} Blogs</h1>
+
+            <!-- Use jinja for loop to show 5 latest blogs.. (SQL select LIMIT 5) -->
+
+            <!-- Card starts here (use jinja for loop here to display multiple cards) -->
+
+          
+          
+          {% for post in blogs %}
+            <div class="blog-container">
+
+                <img src="https://source.unsplash.com/random?{{post['title']}}" alt="Blog related image" class="blog-image">
+
+                <div class="column-blog">
+
+                    <!-- Send variable 'date' and 'time' from flask -->
+                    <div class="upload-datetime">
+                        <div class="upload-datetime-item">
+                            {{post['last_update'].date()}}
+                        </div>
+                        <div class="upload-datetime-item">
+                            {{post['last_update'].strftime("%H:%M:%S")}}
+                        </div>
+                    </div>
+
+                    <!-- Blog title from database -->
+                    <!-- Open Full blog with link -->
+                    <h1 class="blog-title"><a href="{{ url_for('single_blog', blog_id=post['id'], uid=uid) }}">{{post['title']}}</a>
+                    </h1>
+
+                    <!-- Blog content from database -->
+                    <div class="blog-content">
+
+                        <p>{{post['blog']|safe}}</p>
+
+
+                    </div>
+
+                    <p class="dots">...</p>
+
+                    <!-- Send variable 'author' from flask -->
+                    <h3 class="author-name">By <span>{{post['userid']}}</span></h3>
+                </div>
+            
+            </div>
+          {% endfor %}
+            
+
+        </div>
+    </section>
+
+</body>
+
+
+<style>
+    *,
+    *::after,
+    *::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --clr-primary: rgb(225, 85, 35);
+        --clr-dark-400: #202020;
+        --clr-dark-700: #101010;
+        --clr-light: #fff;
+        --clr-muted: rgba(255, 255, 255, 0.6);
+        --gradient: linear-gradient(90deg, rgba(225, 85, 35, 1) 0%, rgba(220, 45, 85, 1) 100%);
+    }
+
+    html {
+        min-height: 100vh;
+    }
+
+    a,
+    h1,
+    h2,
+    h3 {
+        text-decoration: none;
+        color: inherit;
+        font-size: inherit;
+    }
+
+    li {
+        list-style-type: none;
+    }
+
+    body {
+        background-color: var(--clr-dark-700);
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .section-title {
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        text-decoration: underline var(--clr-primary);
+    }
+
+    section {
+        margin-top: 5rem;
+        color: var(--clr-light);
+    }
+
+    .wrapper {
+        max-width: min(1200px, 90vw);
+        margin-inline: auto;
+    }
+
+
+/* About section starts here */
+    .about-container {
+        background-color: var(--clr-dark-400);
+        margin-bottom: 5rem;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .column-about {
+        padding: 3rem;
+    }
+
+    .about-title {
+        font-size: 2.5rem;
+        max-width: 400px;
+        margin-inline: auto;
+        margin-bottom: 3rem;
+        line-height: 0.8em;
+        text-align: center;
+    }
+    .about-title span, .about-content span { color: var(--clr-primary); }
+
+    .about-content {
+        font-size: 1.2rem;
+    }
+    .about-content p {
+        line-height: 1em;
+        margin-block: 1em;
+    }
+
+
+
+/* Blog section starts here */
+    .blog-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        margin-block: 2rem;
+        padding: 0;
+        
+    }
+
+    .blog-image {
+        width: 100%;
+        height: 25rem;
+        object-fit: cover;
+        object-position: left middle;
+    }
+
+    .column-blog {
+        height: 100%;
+        margin: 0 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .upload-datetime {
+        --gap: 3rem;
+        display: flex;
+        gap: var(--gap);
+        font-size: .8rem;
+        color: var(--clr-primary);
+    }
+
+    .column-blog .author-name {
+        font-size: .8rem;
+        color: var(--clr-primary);
+    }
+
+    .blog-title {
+        font-size: 2rem;
+        line-height: 1.6rem;
+    }
+
+    .blog-title:hover {
+        color: var(--clr-primary);
+        text-decoration: underline var(--clr-light);
+        transition: all 50ms linear;
+    }
+
+    .blog-content {
+        font-size: 1rem;
+        color: var(--clr-muted);
+        max-height: 5.5rem;
+        overflow: hidden;
+
+        /* For blurred bottom */
+        position: relative;
+        display: inline-block;
+        padding-bottom: 1em;
+        
+    }
+
+    /* Testing */
+    .blog-content::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3em; /* Adjust height of blur */
+        background: linear-gradient(transparent, var(--clr-dark-700));
+        pointer-events: none;
+        z-index: 1;
+        filter: blur(0);
+    }
+
+    .author-name span {
+      margin-left: .5rem;
+      font-size: 1.1rem;
+      
+    }
+
+    .dots {
+        font-size: 3rem;
+        margin-top: -3rem;
+        margin-left: auto;
+        letter-spacing: 5px;
+        font-weight: 700;
+    }
+
+
+    @media ( max-width: 500px ) {
+        .blog-container {
+            display: block;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+        .column-blog {
+            margin: 0.5rem 0 5rem 0;
+        }
+        .upload-datetime {
+            justify-content: space-between;
+        }
+    }
+
+</style>
+
+
+</html>

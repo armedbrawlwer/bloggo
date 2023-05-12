@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    {% include 'bootstrap.html' %}
+    
     <title>Sign Up</title>
 
     <!--   Google Fonts   -->
@@ -17,16 +17,19 @@
 </head>
 
 <body>
-    {% include 'nav2.html' %}
+    {% include 'nav4.html' %}
 
-
+    {% if alert %}
+      <div class= "alert alert-danger">{{alert}}</div>
+    {% endif %}
+  
     <div class="register_container">
         <h1 class="form_heading">Register</h1>
 
         <form action="/signup/apply" method="post">
             <div class="field">
                 <label>Full Name</label><br>
-                <input type="text" required name="full_name" placeholder="Bruce Wayne">
+                <input type="text" required name="fullname" placeholder="Bruce Wayne">
             </div>
 
             <div class="field">
@@ -36,7 +39,7 @@
 
             <div class="field">
                 <label>Pen name / Username</label><br>
-                <input type="text" required name="username" placeholder="batman">
+                <input type="text" required name="userid" placeholder="batman">
             </div>
 
             <div class="field">
@@ -119,12 +122,30 @@
     }
 
     .field input {
-        padding: .65rem .5rem;
-        border: none;
-        border-radius: 10px;
-        background: var(--clr-dark-700);
-        color: var(--clr-primary);
-        box-shadow: rgba(255, 255, 255, 0.1) 0px 10px 10px -10px;
+      padding: .65rem .5rem;
+      border: none;
+      border-radius: 10px;
+      background: var(--clr-dark-700);
+      color: var(--clr-primary);
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: rgba(255, 255, 255, 0.1) 0px 10px 10px -10px;
+    }
+
+    .alert {
+      padding: 1rem;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      color: #721c24;
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+      text-align: center;
+    }
+
+    .alert-danger {
+      color: #721c24;
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
     }
 
     input[type=submit] {

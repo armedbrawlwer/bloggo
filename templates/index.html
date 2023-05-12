@@ -1,11 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+  
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
+    
+     
+    
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +20,13 @@
 </head>
 
 <body>
-
+{% for message in get_flashed_messages() %}
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{message}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor %}
+  {% include "navbar-main.html" %}
     <section class="about">
         <div class="wrapper">
             <h1 class="section-title">About us</h1>
@@ -48,36 +59,32 @@
             <!-- Use jinja for loop to show 5 latest blogs.. (SQL select LIMIT 5) -->
 
             <!-- Card starts here (use jinja for loop here to display multiple cards) -->
+          {% for post in blogs %}
             <div class="blog-container">
 
-                <img src="https://source.unsplash.com/random?Technology" alt="Blog related image" class="blog-image">
+                <img src="https://source.unsplash.com/random?{{post['title']}}" alt="Blog related image" class="blog-image">
 
                 <div class="column-blog">
 
                     <!-- Send variable 'date' and 'time' from flask -->
                     <div class="upload-datetime">
                         <div class="upload-datetime-item">
-                            {{ date }}
+                            {{post['last_update'].date()}}
                         </div>
                         <div class="upload-datetime-item">
-                            {{ time }}
+                            {{post['last_update'].strftime("%H:%M:%S")}}
                         </div>
                     </div>
 
                     <!-- Blog title from database -->
                     <!-- Open Full blog with link -->
-                    <h1 class="blog-title"><a href="#">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</a>
+                    <h1 class="blog-title"><a href="{{ url_for('single_blog', blog_id=post['id'], uid=0) }}">{{post['title']}}</a>
                     </h1>
 
                     <!-- Blog content from database -->
                     <div class="blog-content">
 
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium officiis ipsum atque
-                            quidem et quibusdam nemo?</p>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium officiis ipsum atque
-                            quidem et quibusdam nemo?</p>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium officiis ipsum atque
-                            quidem et quibusdam nemo?</p>
+                        <p>{{post['blog']|safe}}</p>
 
 
                     </div>
@@ -85,140 +92,13 @@
                     <p class="dots">...</p>
 
                     <!-- Send variable 'author' from flask -->
-                    <h3 class="author-name">by {{ author|capitalize }}</h3>
+                    <h3 class="author-name">By <span>{{post['userid']}}</h3>
                 </div>
 
             </div>
-
-            <!-- Card starts here -->
-            <div class="blog-container">
-
-                <img src="https://source.unsplash.com/random?webdev" alt="Blog related image" class="blog-image">
-
-                <div class="column-blog">
-
-                    <!-- Send variable 'date' and 'time' from flask -->
-                    <div class="upload-datetime">
-                        <div class="upload-datetime-item">
-                            {{ date }}
-                        </div>
-                        <div class="upload-datetime-item">
-                            {{ time }}
-                        </div>
-                    </div>
-
-                    <!-- Blog title from database -->
-                    <!-- Open Full blog with link -->
-                    <h1 class="blog-title"><a href="#">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</a>
-                    </h1>
-
-                    <!-- Blog content from database -->
-                    <div class="blog-content">
-
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium officiis ipsum atque
-                            quidem et quibusdam nemo?</p>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium officiis ipsum atque
-                            quidem et quibusdam nemo?</p>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium officiis ipsum atque
-                            quidem et quibusdam nemo?</p>
-
-
-                    </div>
-
-                    <p class="dots">...</p>
-
-                    <!-- Send variable 'author' from flask -->
-                    <h3 class="author-name">by {{ author|capitalize }}</h3>
-                </div>
-
-            </div>
-
-            <!-- Card starts here -->
-            <div class="blog-container">
-
-                <img src="https://source.unsplash.com/random?IT professional" alt="Blog related image" class="blog-image">
-
-                <div class="column-blog">
-
-                    <!-- Send variable 'date' and 'time' from flask -->
-                    <div class="upload-datetime">
-                        <div class="upload-datetime-item">
-                            {{ date }}
-                        </div>
-                        <div class="upload-datetime-item">
-                            {{ time }}
-                        </div>
-                    </div>
-
-                    <!-- Blog title from database -->
-                    <!-- Open Full blog with link -->
-                    <h1 class="blog-title"><a href="#">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</a>
-                    </h1>
-
-                    <!-- Blog content from database -->
-                    <div class="blog-content">
-
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium officiis ipsum atque
-                            quidem et quibusdam nemo?</p>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium officiis ipsum atque
-                            quidem et quibusdam nemo?</p>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium officiis ipsum atque
-                            quidem et quibusdam nemo?</p>
-
-
-                    </div>
-
-                    <p class="dots">...</p>
-
-                    <!-- Send variable 'author' from flask -->
-                    <h3 class="author-name">by {{ author|capitalize }}</h3>
-                </div>
-
-            </div>
-
-            <!-- Card starts here -->
-            <div class="blog-container">
-
-                <img src="https://source.unsplash.com/random?artificial intelligence" alt="Blog related image" class="blog-image">
-
-                <div class="column-blog">
-
-                    <!-- Send variable 'date' and 'time' from flask -->
-                    <div class="upload-datetime">
-                        <div class="upload-datetime-item">
-                            {{ date }}
-                        </div>
-                        <div class="upload-datetime-item">
-                            {{ time }}
-                        </div>
-                    </div>
-
-                    <!-- Blog title from database -->
-                    <!-- Open Full blog with link -->
-                    <h1 class="blog-title"><a href="#">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</a>
-                    </h1>
-
-                    <!-- Blog content from database -->
-                    <div class="blog-content">
-
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium officiis ipsum atque
-                            quidem et quibusdam nemo?</p>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium officiis ipsum atque
-                            quidem et quibusdam nemo?</p>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium officiis ipsum atque
-                            quidem et quibusdam nemo?</p>
-
-
-                    </div>
-
-                    <p class="dots">...</p>
-
-                    <!-- Send variable 'author' from flask -->
-                    <h3 class="author-name">by {{ author|capitalize }}</h3>
-                </div>
-
-            </div>
-
+          {% endfor %}
+          
+          
         </div>
     </section>
 

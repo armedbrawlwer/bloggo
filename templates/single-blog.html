@@ -17,18 +17,18 @@
         <div class="blog-wrapper">
 
             <!-- Image here -->
-            <img src="https://source.unsplash.com/random?IT professional" alt="An image related to the blog" class="blog-image">
+            <img src="https://source.unsplash.com/random?{{blog['title']}}" alt="An image related to the blog" class="blog-image">
 
             <div class="blog-text-wrapper">
                 <!-- Blog details -->
                 <div class="blog-details flex">
                     <h2 class="blog-author">
-                        By <span>{{ author_name }}</span>
+                        By <span>{{blog['userid']}}</span>
                     </h2>
 
                     <div class="datetime flex">
-                        <h3 class="date">{{ date }}</h3>
-                        <h3 class="time">{{ time }}</h3>
+                        <h3 class="date">{{blog['last_update'].date()}}</h3>
+                        <h3 class="time">{{blog['last_update'].strftime("%H:%M:%S")}}</h3>
                     </div>
                 </div>
 
@@ -37,28 +37,43 @@
                 <!-- Title -->
                 <h1 class="blog-title">
                     <!-- Add jinja title here.. replace line below -->
-                    This is the title of my blog..
+                    {{blog['title']}}
                 </h1>
                 
                 <!-- Content -->
                 <!-- Use jinja here -->
                 <div class="blog-content">
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, non?</p> <br><br>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum similique qui accusamus obcaecati odio doloremque inventore! Laborum non praesentium dolores.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis dolore ullam error doloribus ratione quisquam, temporibus totam ab minus, consectetur suscipit optio iusto maiores. Tenetur illo doloribus repellendus error, rem corrupti porro enim sed. Iste voluptatum fugiat fugit ullam harum!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero fuga voluptatibus dolorem iusto asperiores distinctio nisi veniam nostrum, repudiandae aspernatur!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, dolor!</p> <br><br>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quibusdam ipsam eligendi praesentium sit nemo perspiciatis, quis natus consequuntur porro?</p>
+                    <p>{{blog['blog']|safe}}</p>
                 </div>
 
+                {% if uid != 0 %}
+                  <form class="like-form" action="/{{ blog['id'] }}/like/{{ uid }}" method="post">
+                    {% if user_has_liked %}
+                      <button class="like-button" type="submit" name="action" value="unlike">
+                        Unlike
+                      </button>
+                    {% else %}
+                      <button class="like-button" type="submit" name="action" value="like">
+                        Like
+                      </button>
+                    {% endif %}
+                  </form>
+                {% endif %}
+                <br>
+                <h3>{{ count }} people like this</h3>
+
+
                 <!-- Link this to all blogs page -->
-                <h3><a href="#" class="go-back">
+                <h3><a href="javascript:history.back()" class="go-back">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
                       </svg>
                       
                     Go back
                 </a></h3>
+
+              
+                
             </div>
         </div>
     </div>
@@ -147,6 +162,11 @@
 
     .blog-details .datetime {
         font-size: 0.7rem;
+    }
+
+    .blog-author span {
+      font-size: 1.1rem;
+      margin-left: .5rem;
     }
 
     .blog-title {

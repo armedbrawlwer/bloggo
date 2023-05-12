@@ -21,20 +21,21 @@
             <div class="nav-left">
                 <div class="brand">
                     <img src="../static/images/logo.png" alt="Logo" class="brand-logo">
-                    <h1 class="brand-name"><a href="#">Bloggo</a></h1>
+                    <h1 class="brand-name"><a href="{{url_for('home')}}">Bloggo</a></h1>
                 </div>
 
                 <ul>
-                    <li><a href="#" class="nav-link">All blogs</a></li>
-                    <li><a href="#" class="nav-link">Category 1</a></li>
-                    <li><a href="#" class="nav-link">Category 2</a></li>
-                    <li><a href="#" class=" nav-link contact">Contact us</a></li>
+                    <li><a href="/allBlogs/2/0" class="nav-link">All blogs</a></li>
+                    <li><a href="/categories/2/0" class="nav-link">Categories</a></li>
+
+                                      
+                    <li><a href="{{url_for('help')}}" class=" nav-link contact">Contact us</a></li>
                 </ul>
             </div>
 
             <div class="nav-right">
-                <button class="nav-btn"><a href="#">Login</a></button>
-                <button class="nav-btn btn-ghost"><a href="#">Signup</a></button>
+                <button class="nav-btn"><a href="/login">Login</a></button>
+                <button class="nav-btn btn-ghost"><a href="/signup">Signup</a></button>
             </div>
         </div>
     </div>
@@ -110,6 +111,7 @@
         align-items: center;
         font-size: 1.6rem;
         gap: 1rem;
+
     }
 
     .brand img {

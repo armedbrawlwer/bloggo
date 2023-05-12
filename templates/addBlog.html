@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+  <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    {% include 'nav3.html' %}
+  <div class="main-wrapper">
+    <div class="form-wrapper">
+        <form action="/user/add" method="post">
+          
+          <input type="hidden" name="uid" value="{{uid}}">
+
+          <div class="single-field">
+                <label>Author</label>
+                <input type="text" required name="userid" value="{{userid}}" readonly>
+          </div>
+          
+          <div class="single-field">
+            <label>Title</label>
+            <input type="text" required name="title" >
+          </div>
+          
+          <div class="single-field">
+            <label>Category</label>
+            <select name="category">
+              <option value="">Select a Category</option>
+              {% for cat in category %}
+                <option value="{{ cat['category'] }}">{{ cat['category'] }}</option>
+              {% endfor %}
+            </select>
+            <br>
+            <input type="text" name="new_category" placeholder="or.. Enter a new Category">
+            <!-- <input type="text" required name="category" > -->
+          </div>
+        
+          <div class="single-field">
+            <label>Write your Blog here......</label>
+            <textarea name="blog" id="blog" cols="200" rows="40" class='blog-content'></textarea>
+          </div>
+                
+              
+          
+          <input type="submit" class='btn-submit'>
+          
+          
+        </form>
+    </div>
+</div>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'link image code',
+            toolbar: 'undo redo | formatselect | bold italic backcolor | \
+                alignleft aligncenter alignright alignjustify | \
+                bullist numlist outdent indent | removeformat | help'
+        });
+    </script>
+</body>
+
+
+<style>
+    *,
+    *::after,
+    *::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --clr-primary: rgb(225, 85, 35);
+        --clr-dark-400: #202020;
+        --clr-dark-700: #101010;
+        --clr-light: #fff;
+        --clr-muted: rgba(255, 255, 255, 0.6);
+        --gradient: linear-gradient(90deg, rgba(225, 85, 35, 1) 0%, rgba(220, 45, 85, 1) 100%);
+    }
+
+    html {
+        min-height: 100vh;
+    }
+
+    a,
+    h1,
+    h2,
+    h3 {
+        text-decoration: none;
+        color: inherit;
+        font-size: inherit;
+    }
+
+    li {
+        list-style-type: none;
+    }
+
+    body {
+        background-color: var(--clr-dark-700);
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .main-wrapper {
+      margin-inline: auto;
+      max-width: min( 1400px, 90vw );
+      background-color: var(--clr-dark-400);
+      padding: 1rem;
+      margin-block: 3rem;
+    }
+  
+    .single-field {
+      margin-block: 2rem;
+      color: var(--clr-light);
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    .single-field label {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--clr-primary);
+    }
+    .single-field input {
+      border-radius: 10px;
+      font-size: 1.1rem;
+      padding: 0.5rem;
+      max-width: 400px;
+      background-color: var(--clr-dark-700);
+      color: var(--clr-light);
+    }
+  .single-field .blog-content {
+    
+  }
+
+  .btn-submit {
+        border: none;
+        background: var(--clr-primary);
+        background: var(--gradient);
+        color: var(--clr-light);
+        font-weight: 700;
+        padding: .4rem .8rem;
+        border-radius: 2px;
+        font-size: 1.1rem;
+    }
+
+  select {
+    border-radius: 10px;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    max-width: 400px;
+    background-color: var(--clr-dark-700);
+    color: var(--clr-light);
+  }
+  
+</style>
+
+
+
+</html>
