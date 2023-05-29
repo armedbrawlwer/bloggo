@@ -4,10 +4,6 @@ from sqlalchemy import create_engine, text
 # Access the database connection string from the Replit Secret
 db_conn_string = os.environ.get("DB_CONN_STRING")
 
-#from sqlalchemy import create_engine,text
-
-#db_conn_string="mysql+pymysql://6ho6cdf737v110p38a9f:pscale_pw_Uika1pP0i2IJUJ4jWrwR1pDEHzIhqBMZiqKp5RodqbF@aws.connect.psdb.cloud/bloggo"
-
 engine=create_engine(db_conn_string,
                       connect_args={
                         "ssl": {
