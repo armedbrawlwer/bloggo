@@ -224,6 +224,7 @@
         --gap: 3rem;
         display: flex;
         gap: var(--gap);
+        justify-content: space-between;
         font-size: .7rem;
         color: var(--clr-primary);
     }
@@ -241,6 +242,7 @@
     .blog-title:hover {
         color: var(--clr-primary);
         text-decoration: underline var(--clr-light);
+        transform: scale(1.05);
         transition: all 50ms linear;
     }
 
@@ -269,6 +271,11 @@
         pointer-events: none;
         z-index: 1;
         filter: blur(0);
+    }
+
+    .author-name span {
+      margin-left: .5rem;
+      font-size: 1.1rem; 
     }
 
     .dots {

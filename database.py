@@ -1,7 +1,9 @@
 from sqlalchemy import create_engine,text
 
 
-db_conn_string="mysql+pymysql://2vsfnf1qpq6udop702u1:pscale_pw_WheMMTABITKws64FffWowKKgGndvk7tNu8MMHYAB5Jp@aws.connect.psdb.cloud/bloggo"
+#db_conn_string="mysql+pymysql://2vsfnf1qpq6udop702u1:pscale_pw_WheMMTABITKws64FffWowKKgGndvk7tNu8MMHYAB5Jp@aws.connect.psdb.cloud/bloggo"
+
+db_conn_string="mysql+pymysql://7ylst20cdkcn9159s2wq:pscale_pw_lYxgl7Y2xy2cP7L43MxHmWXu6CVV4iYqiXRl3jviPdq@aws.connect.psdb.cloud/bloggo"
 
 engine=create_engine(db_conn_string,
                       connect_args={
